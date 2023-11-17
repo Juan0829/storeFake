@@ -33,9 +33,13 @@ Navbar.js
 ***OJO***
 
 En el código proporcionado para el componente principal App.jsx, la llamada a la API se realiza dentro del useEffect. Aquí tienes una explicación detallada:
+<img width="1280" alt="Captura de Pantalla 2023-11-16 a la(s) 8 19 11 p m" src="https://github.com/wjulifajarb/APIREACT/assets/44068486/47962fdf-8e5e-4790-9a28-db45743e4399">
 
-<img width="771" alt="Captura de Pantalla 2023-11-16 a la(s) 8 19 24 p m" src="https://github.com/wjulifajarb/APIREACT/assets/44068486/393aa8c9-5141-45ac-ae9f-144e6a4e4e62">
-<img width="1280" alt="Captura de Pantalla 2023-11-16 a la(s) 8 19 11 p m" src="https://github.com/wjulifajarb/APIREACT/assets/44068486/38c1813d-a589-49af-909b-c5ca2689df9d">
+
+<img width="772" alt="Captura de Pantalla 2023-11-16 a la(s) 8 19 33 p m" src="https://github.com/wjulifajarb/APIREACT/assets/44068486/8fafc446-ab3d-4f2f-ab9f-c8a40464420a">
+
+
+
 
 
 
