@@ -34,76 +34,9 @@ Navbar.js
 
 En el código proporcionado para el componente principal App.jsx, la llamada a la API se realiza dentro del useEffect. Aquí tienes una explicación detallada:
 
-// src/App.jsx
-import React, { useState, useEffect } from 'react';
-import Card from './components/Card';
-import Pagination from './components/Pagination';
-import Search from './components/Search';
-import Filter from './components/Filter';
-import Navbar from './components/Navbar';
+<img width="771" alt="Captura de Pantalla 2023-11-16 a la(s) 8 19 24 p m" src="https://github.com/wjulifajarb/APIREACT/assets/44068486/393aa8c9-5141-45ac-ae9f-144e6a4e4e62">
+<img width="1280" alt="Captura de Pantalla 2023-11-16 a la(s) 8 19 11 p m" src="https://github.com/wjulifajarb/APIREACT/assets/44068486/38c1813d-a589-49af-909b-c5ca2689df9d">
 
-const App = () => {
-  // Estado para almacenar la lista de personajes
-  const [characters, setCharacters] = useState([]);
-
-  // Estado para el número de página actual
-  const [currentPage, setCurrentPage] = useState(1);
-
-  // Número de personajes por página
-  const [charactersPerPage] = useState(10);
-
-  // Estado para el término de búsqueda
-  const [searchTerm, setSearchTerm] = useState('');
-
-  // Estado para el filtro
-  const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    // Función para realizar la llamada a la API
-    const fetchData = async () => {
-      try {
-        // Construye la URL de la API
-        const apiUrl = `https://rickandmortyapi.com/api/character?name=${searchTerm}&species=${filter}`;
-
-        // Realiza la llamada a la API
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-
-        // Actualiza el estado con los resultados de la API
-        setCharacters(data.results);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    // Llama a la función fetchData al montar el componente y cada vez que cambien searchTerm o filter
-    fetchData();
-  }, [searchTerm, filter]);
-
-  // Lógica de paginación
-  const indexOfLastCharacter = currentPage * charactersPerPage;
-  const indexOfFirstCharacter = indexOfLastCharacter - charactersPerPage;
-  const currentCharacters = characters.slice(indexOfFirstCharacter, indexOfLastCharacter);
-
-  return (
-    <div>
-      <Navbar />
-      <Search setSearchTerm={setSearchTerm} />
-      <Filter setFilter={setFilter} />
-      {currentCharacters.map((character) => (
-        <Card key={character.id} character={character} />
-      ))}
-      <Pagination
-        charactersPerPage={charactersPerPage}
-        totalCharacters={characters.length}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
-    </div>
-  );
-};
-
-export default App;
 
 
 En el useEffect, se utiliza la función fetchData que realiza una llamada a la API de Rick and Morty. La URL de la API se construye utilizando el término de búsqueda (searchTerm) y el filtro (filter). Cuando estos valores cambian, la llamada a la API se vuelve a realizar.
