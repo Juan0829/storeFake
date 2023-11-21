@@ -1,26 +1,27 @@
-// src/components/Pagination.js
 import React from 'react';
 
-const Pagination = ({ charactersPerPage, totalCharacters, currentPage, setCurrentPage }) => {
-  const pageNumbers = [];
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+  const prevPage = () => {
+    if (currentPage > 1) {
+      onPageChange(currentPage - 1);
+    }
+  };
 
-  for (let i = 1; i <= Math.ceil(totalCharacters / charactersPerPage); i++) {
-    pageNumbers.push(i);
-  }
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      onPageChange(currentPage + 1);
+    }
+  };
 
   return (
-    <nav>
-      <ul className="pagination">
-        {pageNumbers.map((number) => (
-          <li key={number} className={currentPage === number ? 'active' : ''}>
-            <a onClick={() => setCurrentPage(number)} href="#!">
-              {number}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div className="pagination">
+      <button onClick={prevPage}>Previous</button>
+      <span>{`Page ${currentPage} of ${totalPages}`}</span>
+      <button onClick={nextPage}>Next</button>
+    </div>
   );
 };
 
 export default Pagination;
+
+

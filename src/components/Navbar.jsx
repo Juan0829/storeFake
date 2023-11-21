@@ -1,11 +1,10 @@
-// src/components/Navbar.js
 import React from 'react';
 
 const Navbar = () => {
   return (
-    <nav>
-      <h1>Rick and Morty Wiki</h1>
-    </nav>
+    <div className="navbar">
+      {/* Enlaces de navegación */}
+    </div>
   );
 };
 

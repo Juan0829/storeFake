@@ -1,15 +1,36 @@
-// src/components/Filter.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Filter = ({ setFilter }) => {
+const Filter = ({ onFilter }) => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('https://fakestoreapi.com/products/categories');
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  const handleFilterChange = (e) => {
+    const value = e.target.value;
+    onFilter(value);
+  };
+
   return (
-    <div>
-      <label>Filter by:</label>
-      <select onChange={(e) => setFilter(e.target.value)}>
-        <option value="">All</option>
-        <option value="human">Human</option>
-        <option value="alien">Alien</option>
-        {/* Add more options based on your data */}
+    <div className="filter">
+      <select onChange={handleFilterChange}>
+        <option value="">All Categories</option>
+        {categories.map((category, index) => (
+          <option key={index} value={category}>
+            {category}
+          </option>
+        ))}
       </select>
     </div>
   );

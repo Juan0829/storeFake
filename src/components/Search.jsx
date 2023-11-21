@@ -1,13 +1,21 @@
-// src/components/Search.js
-import React from 'react';
+import React, { useState } from 'react';
 
-const Search = ({ setSearchTerm }) => {
+const Search = ({ onSearch }) => {
+  const [query, setQuery] = useState('');
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setQuery(value);
+    onSearch(value);
+  };
+
   return (
-    <div>
+    <div className="search">
       <input
         type="text"
-        placeholder="Search characters"
-        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Search..."
+        value={query}
+        onChange={handleSearch}
       />
     </div>
   );
