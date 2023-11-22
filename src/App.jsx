@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from './components/Card';
 import Pagination from './components/Pagination';
-import Search from './components/Search';
-import Filter from './components/Filter';
+
 import Navbar from './components/Navbar';
 
 const App = () => {
@@ -10,8 +9,8 @@ const App = () => {
   const [filteredItems, setFilteredItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterTerm, setFilterTerm] = useState('');
+  const [searchTerm] = useState('');
+  const [filterTerm] = useState('');
 
   // Llamar a la API y obtener los datos
   useEffect(() => {
@@ -57,20 +56,35 @@ const App = () => {
   };
 
   return (
-    <div className="app">
-      <Navbar />
-      <Search onSearch={(value) => setSearchTerm(value)} />
-      <Filter onFilter={(value) => setFilterTerm(value)} />
-      {currentItems.map((item) => (
-        <Card key={item.id} item={item} />
-      ))}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={Math.ceil(filteredItems.length / itemsPerPage)}
-        onPageChange={paginate}
-      />
+    <div>
+
+      <div className='header'>
+        <nav className="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Sobre nosotros</li>
+            <li>Contacto</li>
+          </ul>
+        </nav>
+        <h1>NOMBRE DE LA PAGINA</h1>
+        <Navbar />
+      </div>
+      <div className="banner">
+        <img  alt="banner" />
+      </div>
+      
+      <div className="productos">
+        {currentItems.map((item) => (
+          <Card key={item.id} item={item} />
+        ))}
+      </div>
+
+      <div className="paginas"><Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(filteredItems.length / itemsPerPage)}
+          onPageChange={paginate}/>
+      </div>
     </div>
   );
 };
-
 export default App;
