@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Card from './components/Card';
 import Pagination from './components/Pagination';
-
+import Filter from './components/Filter';
 import Navbar from './components/Navbar';
+import Search from './components/Search';
+import desktop from './assets/img/desktop.jpg';
 
 const App = () => {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
-  const [searchTerm] = useState('');
-  const [filterTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterTerm, setFilterTerm] = useState('');
 
   // Llamar a la API y obtener los datos
   useEffect(() => {
@@ -28,17 +30,14 @@ const App = () => {
     fetchData();
   }, []);
 
-  // Filtrar los elementos según la búsqueda y los filtros aplicados
+  // Filtrar los elementos según categoria
   useEffect(() => {
     let filtered = items.filter((item) =>
       item.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     if (filterTerm) {
-      // Aplicar filtros adicionales si existen
-      // Por ejemplo, podrías filtrar por categoría o precio
-      filtered = filtered.filter((item) => {
-        // Implementa lógica de filtro aquí
+        filtered = filtered.filter((item) => {
         return item.category.toLowerCase() === filterTerm.toLowerCase();
       });
     }
@@ -54,36 +53,32 @@ const App = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
+//renderizado
   return (
     <div>
 
-      <div className='header'>
-        <nav className="menu">
-          <ul>
-            <li>Inicio</li>
-            <li>Sobre nosotros</li>
-            <li>Contacto</li>
-          </ul>
-        </nav>
-        <h1>NOMBRE DE LA PAGINA</h1>
-        <Navbar />
-      </div>
-      <div className="banner">
-        <img  alt="banner" />
+      <Navbar />
+
+      <img className="banner" src={desktop}/>
+
+      <div className="buscar">
+        <Search className="search" onSearch={(value) => setSearchTerm(value)} />
+        <Filter className="filter" onFilter={(value) => setFilterTerm(value)} />
       </div>
       
-      <div className="productos">
+      
+      <div className="products">
         {currentItems.map((item) => (
           <Card key={item.id} item={item} />
         ))}
       </div>
 
-      <div className="paginas"><Pagination
+      <div className="pages"><Pagination
           currentPage={currentPage}
           totalPages={Math.ceil(filteredItems.length / itemsPerPage)}
           onPageChange={paginate}/>
       </div>
+
     </div>
   );
 };

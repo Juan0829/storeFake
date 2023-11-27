@@ -1,16 +1,25 @@
-import React, {useState} from 'react';
-import Search from './Search';
-import Filter from './Filter';
+
+import logo from '../assets/img/logo.png';
 
 const Navbar = () => {
-  const [setSearchTerm] = useState('');
-  const [setFilterTerm] = useState('');
+
 
   return (
-    <div className="navbar">
-      <Search onSearch={(value) => setSearchTerm(value)} />
-      <Filter onFilter={(value) => setFilterTerm(value)} />
-    </div>
+      <div className='header'>
+
+        <img className="logo" src={logo} alt="logo" />
+
+        <nav >
+          <ul className="menu">
+            <li>HOME</li>
+            <li>PRODUCTS</li>
+            <li>BLOG</li>
+            <li>CONTACT</li>
+          </ul>
+        </nav>
+        
+      </div>
+      
   );
 };
 

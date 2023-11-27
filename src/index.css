@@ -1,49 +1,120 @@
-body{
-  background-color: #DBB287;
-}
-img{
-  width: 150px;
-}
-.banner{
-  width: 100%;
-  background-image: url('desktop.png');
-}
-.menu{
-  display:flex;
-  flex-direction: row;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+  background-color: #adadad;
+  margin: 0; 
+  font-family: 'Montserrat', sans-serif;
 }
 .header{
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
   height: 60px;
   width: 100%;
   background-color: #ADADAD;
 }
-.card{
-  width: 180px;
-  background-color: white;
-  border: 1px solid black;
-  margin: 0 auto;
-  margin: 10px 10px 10px 10px;
-  padding: 10px 10px 10px 10px;
+.logo {
+  display: flex;
+  align-items: center;
+  height: 45px;
+  width: 150px;
+
 }
-.navbar{
+
+nav{
+  margin: 0 auto;
+}
+
+.menu {
+  display:flex;
+  align-items: center;
+  flex-direction: row;
+  font-weight: bold;
+  list-style-type: none;
+  margin:  0 auto;
+  padding: 0;
+}
+
+.menu li {
+  margin-right: 20px; 
+}
+.menu li:hover {
+  font-size: 24px;
+}
+.menu li:last-child {
+  margin-right: 0;
+}
+
+.banner{
+  width: 100%;
+
+}
+.banner, .menu li, button, select, .card:hover{
+  cursor: pointer;
+}
+button:hover {
+  background-color: black;
+  color: white;
+}
+
+.buscar{
   display: flex;
   flex-direction: row;
-  justify-content:flex-end;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  height: 50px;
 }
-.productos{
+
+input, select{
+  border-radius: 20px;
+  border: 2px solid black;
+  background-color: transparent;
+  padding: 3px 10px;
+  margin-right: 20px;
+  width: 200px;
+  color: rgb(90, 90, 90);
+}
+
+.products{
   display: flex;
   flex-wrap: wrap;
   align-items: space-between;
   justify-content: center;
   margin: 0 auto;
   max-width: 1200px;
-  background-color: #FFEEC5;
+  background-color: rgb(207, 207, 207);
 }
-.paginas{
+
+.card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  background-color: white;
+  margin: 0 auto;
+  margin: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
+}
+
+
+img{
+  margin: 0 auto;
+  width: 100px;
+}
+
+.pages{
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+button{
+  border-radius: 20px;
+  border: 2px solid black;
+  background-color: transparent;
+  padding: 3px 10px;
+  margin: 20px;
+  color: rgb(90, 90, 90);
 }
